@@ -1,8 +1,10 @@
 const express = require('express');
-const homeController = require('../controllers/homeController');
+const stateController = require('../controllers/stateController');
+const cityController = require('../controllers/cityController');
 
 const router = express.Router();
 
-router.get('/', homeController);
+router.get('/state', stateController);
+router.get('/city/:state', cityController);
 
 module.exports = router;
