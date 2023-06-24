@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+.cabecalho{
+  background-color:  #0E4364;
+  width: 100%;
+  height: 188px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+ .container-lateral{
+  background-color: #0E4364;
+  width: 384px;
+  height: 740px;
+  border-radius: 17px;
+  margin: 36px;
+ }
+
+ .cabecalho img{
+  width: 160px;
+  height: 139px;
+ }
+
+ .cabecalho h1{
+  font-family: bebas neue;
+  color: white;
+  letter-spacing: 2px;
+  font-size: 60px;
+ }
