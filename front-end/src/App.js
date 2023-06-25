@@ -85,7 +85,7 @@ function App() {
 
     const response = await getCities(selectedState);
     if (response.data) {
-      const cities = response.data.filter((city) => city.municipo !== null);
+      const cities = response.data.filter((city) => city.municipio !== null);
       setCities(cities);
       setSelectedCity('');
     }
