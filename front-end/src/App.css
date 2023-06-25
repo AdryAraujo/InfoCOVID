@@ -9,14 +9,15 @@
 }
  .container-lateral{
   background-color: #0E4364;
-  width: 320px;
-  height: 740px;
+  width: 30%;
+  height: 700px;
   border-radius: 17px;
   margin-top: 36px;
   margin-left: 36px;
   padding: 18px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 36px;
  }
 
  .cabecalho img{
@@ -31,7 +32,7 @@
   font-size: 60px;
  }
 
- .filtros{
+ .container-filtros{
   justify-content: left;
  }
 
@@ -41,7 +42,7 @@
   margin-bottom: 10px;
  }
 
- .container-inf{
+ .container-cards{
   justify-content: center;
   align-items: center;
   padding: 18px;
@@ -53,14 +54,15 @@
   display: flex;
  }
 
- .container2{
+ .container-principal{
   border-radius: 17px;
   border: 1px solid #D9D9D9;
-  width: 1000px;
-  height: 740px;
+  width: 70%;
+  height: auto;
   margin-top: 36px;
   margin-left: 20px;
   margin-right: 36px;
+  margin-bottom: 36px;
  }
 
  .container-table{
