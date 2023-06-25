@@ -1,5 +1,5 @@
 import './App.css';
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../src/assets/img/logoSemNome.png'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -16,6 +16,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { FormLabel, TextField } from '@mui/material';
+import { getCities, getStates } from './services/api';
 
 function createData(uf,
   cod_IBGE,
@@ -35,7 +36,8 @@ function createData(uf,
   popu_estimada,
   data_ref,
   num_atuali) {
-  return { uf,
+  return {
+    uf,
     cod_IBGE,
     municipio,
     data_de_coleta,
@@ -52,7 +54,8 @@ function createData(uf,
     dado_repetido,
     popu_estimada,
     data_ref,
-    num_atuali};
+    num_atuali
+  };
 }
 
 const rows = [
@@ -63,10 +66,43 @@ const rows = [
 ];
 
 function App() {
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [selectedState, setSelectedState] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+
+  async function loadStates() {
+    const response = await getStates();
+    if (response.data) {
+      setStates(response.data);
+    }
+  }
+
+  async function loadCities() {
+    if (!selectedState) {
+      return;
+    }
+
+    const response = await getCities(selectedState);
+    if (response.data) {
+      const cities = response.data.filter((city) => city.municipo !== null);
+      setCities(cities);
+      setSelectedCity('');
+    }
+  }
+
+  useEffect(() => {
+    loadStates();
+  }, []);
+
+  useEffect(() => {
+    loadCities();
+  }, [selectedState]);
+
   return (
     <div className='container'>
       <div className='cabecalho'>
-        <img id="logo" src={logo} alt='Info Covid'/>
+        <img id="logo" src={logo} alt='Info Covid' />
         <h1>INFO COVID</h1>
       </div>
       <div className='container-dados'>
@@ -76,127 +112,139 @@ function App() {
           </div>
           <div className='filtros'>
             <FormControl fullWidth>
-              <FormLabel id='data-inicio' sx={{color: 'white'}} >Data Início:</FormLabel>
-              <TextField  
-                sx={{backgroundColor: "white",
-                color: "#0E4364",
-                marginBottom: "20px"}} 
-                id="dataInicio" 
+              <FormLabel id='data-inicio' sx={{ color: 'white' }} >Data Início:</FormLabel>
+              <TextField
+                sx={{
+                  backgroundColor: "white",
+                  color: "#0E4364",
+                  marginBottom: "20px"
+                }}
+                id="dataInicio"
                 fullWidth
-                aria-labelledby='data-inicio' 
+                aria-labelledby='data-inicio'
                 type='date'
               />
             </FormControl>
             <FormControl fullWidth>
-              <FormLabel id='data-fim' sx={{color: 'white'}} >Data Fim:</FormLabel>
-              <TextField  
-                sx={{backgroundColor: "white",
-                color: "#0E4364",
-                marginBottom: "20px"}} 
-                id="dataFim" 
+              <FormLabel id='data-fim' sx={{ color: 'white' }} >Data Fim:</FormLabel>
+              <TextField
+                sx={{
+                  backgroundColor: "white",
+                  color: "#0E4364",
+                  marginBottom: "20px"
+                }}
+                id="dataFim"
                 fullWidth
-                aria-labelledby='data-fim' 
+                aria-labelledby='data-fim'
                 type='date'
               />
             </FormControl>
             <FormControl fullWidth >
-              <InputLabel id="input-municipios">Municípios</InputLabel>
-              <Select
-              sx={{
-                backgroundColor: "white",
-                color: "#0E4364",
-                marginBottom: "20px"
-              }}
-                labelId="select-municipios"
-                id="municipios"
-                label="Municípios"
-              >
-                <MenuItem >Twenty</MenuItem>
-                <MenuItem >Thirty</MenuItem>
-
-              </Select>
-            </FormControl>
-            <FormControl fullWidth >
               <InputLabel id="input-estados">Estados</InputLabel>
               <Select
-              sx={{
-                backgroundColor: "white",
-                color: "#0E4364",
-                marginBottom: "20px"
-              }}
+                value={selectedState}
+                sx={{
+                  backgroundColor: "white",
+                  color: "#0E4364",
+                  marginBottom: "20px"
+                }}
                 labelId="select-estados"
                 id="estados"
                 label="Estados"
+                placeholder='Selecione um estado'
+                onChange={(e) => setSelectedState(e.target.value)}
               >
-                <MenuItem >Twenty</MenuItem>
-                <MenuItem >Thirty</MenuItem>
-
+                {states.map(state => (
+                  <MenuItem value={state['UF']}>{state['UF']}</MenuItem>
+                ))}
               </Select>
-              
+            </FormControl>
+            <FormControl fullWidth >
+              <InputLabel id="input-municipios">Municípios</InputLabel>
+              <Select
+                value={selectedCity}
+                sx={{
+                  backgroundColor: "white",
+                  color: "#0E4364",
+                  marginBottom: "20px"
+                }}
+                labelId="select-municipios"
+                id="municipios"
+                label="Municípios"
+                onChange={(e) => setSelectedCity(e.target.value)}
+              >
+                {cities.map(city => (
+                  <MenuItem value={city.municipio}>{city.municipio}</MenuItem>
+                ))}
+              </Select>
             </FormControl>
           </div>
         </div>
 
         <div className='container2'>
           <div className='container-inf'>
-            <Card 
-            sx={{ width: '150px',
-                  height: '100px',
-                  marginRight: '20px',
-                  backgroundColor: '#3D989B',
-                  color: 'white'
-          }}>
+            <Card
+              sx={{
+                width: '150px',
+                height: '100px',
+                marginRight: '20px',
+                backgroundColor: '#3D989B',
+                color: 'white'
+              }}>
               <CardContent>
                 <Typography fontSize={13} textAlign={'justify'}>
-                Óbitos acumulados p/ população (%)
+                  Óbitos acumulados p/ população (%)
                 </Typography>
                 <Typography fontSize={15} >
                   <b>30.000</b>
                 </Typography>
               </CardContent>
             </Card>
-            <Card 
-            sx={{ width: '170px',
-                  height: '100px',
-                  marginRight: '20px',
-                  backgroundColor: '#3D989B',
-                  color: 'white'
-          }}>
+            <Card
+              sx={{
+                width: '170px',
+                height: '100px',
+                marginRight: '20px',
+                backgroundColor: '#3D989B',
+                color: 'white'
+              }}>
               <CardContent>
                 <Typography fontSize={13} textAlign={'justify'}>
-                Óbitos acumulados p/ casos confirmados (%)
+                  Óbitos acumulados p/ casos confirmados (%)
                 </Typography>
                 <Typography fontSize={15} >
                   <b>30.000</b>
                 </Typography>
               </CardContent>
             </Card>
-            <Card 
-            sx={{ width: '150px',
-                  height: '100px',
-                  marginRight: '20px',
-                  backgroundColor: '#3D989B',
-                  color: 'white'
-          }}>
+            <Card
+              sx={{
+                width: '150px',
+                height: '100px',
+                marginRight: '20px',
+                backgroundColor: '#3D989B',
+                color: 'white'
+              }}>
               <CardContent>
                 <Typography fontSize={13} textAlign={'justify'}>
-                Casos acumulados p/ população (%)
+                  Casos acumulados p/ população (%)
                 </Typography>
                 <Typography fontSize={15} >
                   <b>30.000</b>
                 </Typography>
               </CardContent>
             </Card>
-            <Card 
-            sx={{ width: '150px',
-                  height: '100px',
-                  marginRight: '20px',
-                  backgroundColor: '#3D989B',
-                  color: 'white'
-          }}>
+            <Card
+              sx={{
+                width: '150px',
+                height: '100px',
+                marginRight: '20px',
+                backgroundColor: '#3D989B',
+                color: 'white'
+              }}>
               <CardContent>
                 <Typography fontSize={13} textAlign={'justify'}>
-                Casos acumulados p/ 1000hab
+                  Casos acumulados p/ 1000hab
                 </Typography>
                 <Typography fontSize={15} >
                   <b>30.000</b>
@@ -205,7 +253,7 @@ function App() {
             </Card>
           </div>
           <div className='container-table'>
-          <TableContainer component={Paper}>
+            <TableContainer component={Paper}>
               <Table aria-label="simple table">
                 <TableHead>
                   <TableRow>
