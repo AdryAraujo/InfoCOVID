@@ -77,17 +77,17 @@ const getPercentuaisPorMunicipio = (municipio, dataInicio, dataFim) => {
         }
 
         const query = `
-        SELECT 
-            (obitos_acum * 100 / popula_estimada) as percentual_obitos_por_populacao,
-            (obitos_acum * 100 / confirm_acum) as percentual_obitos_por_confirmados,
-            (confirm_acum * 100 / popula_estimada) as percentual_confirmados_por_populacao,
-            (confirm_acum * 1000 / popula_estimada) as casos_por_1000hab
-        FROM Casos c
-        JOIN Municipio m ON (c.cod_ibge = m.cod_ibge)
-        WHERE municipio = ?
-        ${whereClause}
-        ORDER BY numero_atualizacao DESC LIMIT 1
-      `;
+            SELECT 
+                (obitos_acum * 100 / popula_estimada) as percentual_obitos_por_populacao,
+                (obitos_acum * 100 / confirm_acum) as percentual_obitos_por_confirmados,
+                (confirm_acum * 100 / popula_estimada) as percentual_confirmados_por_populacao,
+                (confirm_acum * 1000 / popula_estimada) as casos_por_1000hab
+            FROM Casos c
+            JOIN Municipio m ON (c.cod_ibge = m.cod_ibge)
+            WHERE municipio = ?
+            ${whereClause}
+            ORDER BY numero_atualizacao DESC LIMIT 1
+        `;
 
         connection.query(query, values, (err, results) => {
             if (err) {
