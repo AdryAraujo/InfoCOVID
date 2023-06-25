@@ -9,10 +9,11 @@
 }
  .container-lateral{
   background-color: #0E4364;
-  width: 384px;
+  width: 320px;
   height: 740px;
   border-radius: 17px;
-  margin: 36px;
+  margin-top: 36px;
+  margin-left: 36px;
   padding: 18px;
   display: flex;
   flex-direction: column;
@@ -39,3 +40,30 @@
   text-align: center;
   margin-bottom: 10px;
  }
+
+ .container-inf{
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  display: flex;
+  margin-inline: 20px;
+ }
+
+ .container-dados{
+  display: flex;
+ }
+
+ .container2{
+  border-radius: 17px;
+  border: 1px solid #D9D9D9;
+  width: 1000px;
+  height: 740px;
+  margin-top: 36px;
+  margin-left: 20px;
+  margin-right: 36px;
+ }
+
+ .container-table{
+  margin: 10px;
+ }
+
