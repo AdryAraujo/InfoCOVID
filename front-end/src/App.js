@@ -15,6 +15,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { FormLabel, TextField } from '@mui/material';
 
 function createData(uf,
   cod_IBGE,
@@ -74,9 +75,38 @@ function App() {
             <h2>Refine sua busca aqui!</h2>
           </div>
           <div className='filtros'>
+            <FormControl fullWidth>
+              <FormLabel id='data-inicio' sx={{color: 'white'}} >Data Início:</FormLabel>
+              <TextField  
+                sx={{backgroundColor: "white",
+                color: "#0E4364",
+                marginBottom: "20px"}} 
+                id="dataInicio" 
+                fullWidth
+                aria-labelledby='data-inicio' 
+                type='date'
+              />
+            </FormControl>
+            <FormControl fullWidth>
+              <FormLabel id='data-fim' sx={{color: 'white'}} >Data Fim:</FormLabel>
+              <TextField  
+                sx={{backgroundColor: "white",
+                color: "#0E4364",
+                marginBottom: "20px"}} 
+                id="dataFim" 
+                fullWidth
+                aria-labelledby='data-fim' 
+                type='date'
+              />
+            </FormControl>
             <FormControl fullWidth >
               <InputLabel id="input-municipios">Municípios</InputLabel>
               <Select
+              sx={{
+                backgroundColor: "white",
+                color: "#0E4364",
+                marginBottom: "20px"
+              }}
                 labelId="select-municipios"
                 id="municipios"
                 label="Municípios"
@@ -85,22 +115,29 @@ function App() {
                 <MenuItem >Thirty</MenuItem>
 
               </Select>
-              <InputLabel id="input-municipio">Município</InputLabel>
-              <Select fullWidth
-                labelId="select-municipio"
-                id="municipio"
-                label="Município"
+            </FormControl>
+            <FormControl fullWidth >
+              <InputLabel id="input-estados">Estados</InputLabel>
+              <Select
+              sx={{
+                backgroundColor: "white",
+                color: "#0E4364",
+                marginBottom: "20px"
+              }}
+                labelId="select-estados"
+                id="estados"
+                label="Estados"
               >
-                <MenuItem >Ten</MenuItem>
                 <MenuItem >Twenty</MenuItem>
                 <MenuItem >Thirty</MenuItem>
+
               </Select>
+              
             </FormControl>
           </div>
         </div>
-        <div className='container2'>
 
-        
+        <div className='container2'>
           <div className='container-inf'>
             <Card 
             sx={{ width: '150px',
@@ -219,9 +256,6 @@ function App() {
                       <TableCell align="right">{row.popu_estimada}</TableCell>
                       <TableCell align="right">{row.data_ref}</TableCell>
                       <TableCell align="right">{row.num_atuali}</TableCell>
-
-
-
                     </TableRow>
                   ))}
                 </TableBody>
@@ -230,7 +264,6 @@ function App() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
