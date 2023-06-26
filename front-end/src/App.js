@@ -9,11 +9,13 @@ import {getCases} from './services/api'
 
 function App() {
   const [cases, setCases] = useState([]);
+  const [percent, setPercent] = useState({});
 
   async function loadCases(dataInicio, dataFim, selectedState, selectedCity, campo, maiorQue) {
     const response = await getCases(dataInicio, dataFim, selectedState, selectedCity, campo, maiorQue);
     if (response.data) {
-        setCases(response.data.data);
+      setCases(response.data.data);
+      setPercent({...response.data.statistics[0]});
     }
 }
 
@@ -35,7 +37,7 @@ function App() {
 
         <div className='container-principal'>
           <div className='container-cards'>
-            <InfoCards></InfoCards>
+            <InfoCards percent={percent}></InfoCards>
           </div>
           <div className='container-table'>
             <InfoTable rows={cases}></InfoTable>

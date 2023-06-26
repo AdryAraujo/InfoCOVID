@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import React from "react";
 
-function InfoCards() {
+function InfoCards({percent}) {
     return (
         <>
             <Card
@@ -17,7 +17,7 @@ function InfoCards() {
                         Óbitos acumulados p/ população (%)
                     </Typography>
                     <Typography fontSize={15} >
-                        <b>30.000</b>
+                        <b>{percent.percentual_obitos_por_populacao}</b>
                     </Typography>
                 </CardContent>
             </Card>
@@ -34,7 +34,7 @@ function InfoCards() {
                         Óbitos acumulados p/ casos confirmados (%)
                     </Typography>
                     <Typography fontSize={15} >
-                        <b>30.000</b>
+                        <b>{percent.percentual_obitos_por_confirmados}</b>
                     </Typography>
                 </CardContent>
             </Card>
@@ -51,7 +51,7 @@ function InfoCards() {
                         Casos acumulados p/ população (%)
                     </Typography>
                     <Typography fontSize={15} >
-                        <b>30.000</b>
+                        <b>{percent.percentual_confirmados_por_populacao}</b>
                     </Typography>
                 </CardContent>
             </Card>
@@ -68,7 +68,7 @@ function InfoCards() {
                         Casos acumulados p/ 1000hab
                     </Typography>
                     <Typography fontSize={15} >
-                        <b>30.000</b>
+                        <b>{percent.casos_por_1000hab}</b>
                     </Typography>
                 </CardContent>
             </Card>
