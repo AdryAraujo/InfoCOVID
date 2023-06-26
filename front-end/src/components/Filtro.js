@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Button, FormControl, FormLabel, InputLabel, MenuItem, OutlinedInput, Select, TextField } from "@mui/material";
-import { getCities, getStates } from '../services/api';
+import { getCities, getStates, getCases } from '../services/api';
 
 
-function Filtro() {
+function Filtro({onSubmit}) {
+    const [campo, setCampo] = useState('');
+    const [maiorQue, setMaiorQue] = useState(0);
+    const [dataInicio, setDataInicio] = useState('');
+    const [dataFim, setDataFim] = useState('');
     const [states, setStates] = useState([]);
     const [cities, setCities] = useState([]);
     const [selectedState, setSelectedState] = useState('');
@@ -51,6 +55,7 @@ function Filtro() {
                     fullWidth
                     aria-labelledby='data-inicio'
                     type='date'
+                    onChange={(e) => setDataInicio(e.target.value)}
                 />
             </FormControl>
             <FormControl fullWidth>
@@ -66,6 +71,7 @@ function Filtro() {
                     fullWidth
                     aria-labelledby='data-fim'
                     type='date'
+                    onChange={(e) => setDataFim(e.target.value)}
                 />
             </FormControl>
             <FormControl fullWidth >
@@ -116,14 +122,18 @@ function Filtro() {
                         labelId="select-campo"
                         id="Campo"
                         label="Campo"
+                        onChange={(e) => setCampo(e.target.value)}
+
                     >
-                        <MenuItem>teste</MenuItem>
+                        <MenuItem value={'obitos_acum'}>Óbitos acumulados</MenuItem>
+                        <MenuItem value={'obitos_no_dia'}>Óbitos no dia</MenuItem>
+                        <MenuItem value={'numero_atualizacao'}>Quantidade de atualizações</MenuItem>
                     </Select>
                     <span style={{marginInline: '2px', color: 'white'}}>{">"}</span>
-                    <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{backgroundColor: 'white', borderRadius: '4px'}}/>
+                    <TextField fullWidth id="outlined-basic" label="Valor" variant="outlined" type={'number'} onChange={(e) => setMaiorQue(e.target.value)}  sx={{backgroundColor: 'white', borderRadius: '4px'}}/>
                 </div>
             </FormControl>
-            <Button fullWidth variant='contained' sx={{backgroundColor: '#3D989B', margin: '18px auto'}}>Filtrar</Button>
+            <Button fullWidth variant='contained' sx={{backgroundColor: '#3D989B', margin: '18px auto'}} onClick={(e) => onSubmit(dataInicio, dataFim, selectedState, selectedCity, campo, maiorQue)}>Filtrar</Button>
         </>
     );
 }

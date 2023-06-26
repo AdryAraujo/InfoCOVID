@@ -40,18 +40,8 @@ function createData(uf,
       num_atuali
     };
   }
-  
-  const rows = [
-    createData('SE', 2800308, "Aracaju", "2020-04-02T03:00:00.000Z", "city", 20, 3, "20", "202014", 2, 2, "0.1", 657013, 0, 0, 0, 664908, "2020-04-02T03:00:00.000Z", 20,),
-    createData('SE', 2800308, "Aracaju", "2020-04-02T03:00:00.000Z", "city", 20, 3, "20", "202014", 2, 2, "0.1", 657013, 0, 0, 0, 664908, "2020-04-02T03:00:00.000Z", 20,),
-    createData('SE', 2800308, "Aracaju", "2020-04-02T03:00:00.000Z", "city", 20, 3, "20", "202014", 2, 2, "0.1", 657013, 0, 0, 0, 664908, "2020-04-02T03:00:00.000Z", 20,),
-    createData('SE', 2800308, "Aracaju", "2020-04-02T03:00:00.000Z", "city", 20, 3, "20", "202014", 2, 2, "0.1", 657013, 0, 0, 0, 664908, "2020-04-02T03:00:00.000Z", 20,),
-    createData('SE', 2800308, "Aracaju", "2020-04-02T03:00:00.000Z", "city", 20, 3, "20", "202014", 2, 2, "0.1", 657013, 0, 0, 0, 664908, "2020-04-02T03:00:00.000Z", 20,),
-    createData('SE', 2800308, "Aracaju", "2020-04-02T03:00:00.000Z", "city", 20, 3, "20", "202014", 2, 2, "0.1", 657013, 0, 0, 0, 664908, "2020-04-02T03:00:00.000Z", 20,),
-    createData('SE', 2800308, "Aracaju", "2020-04-02T03:00:00.000Z", "city", 20, 3, "20", "202014", 2, 2, "0.1", 657013, 0, 0, 0, 664908, "2020-04-02T03:00:00.000Z", 20,)
-  ];
 
-function InfoTable(){
+function InfoTable({rows}){
     return(
         <TableContainer component={Paper}>
               <Table aria-label="simple table">
@@ -85,25 +75,25 @@ function InfoTable(){
                       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">
-                        {row.uf}
+                        {row.UF}
                       </TableCell>
-                      <TableCell align="right">{row.cod_IBGE}</TableCell>
+                      <TableCell align="right">{row.cod_ibge}</TableCell>
                       <TableCell align="right">{row.municipio}</TableCell>
-                      <TableCell align="right">{row.data_de_coleta}</TableCell>
+                      <TableCell align="right">{row.data_coleta}</TableCell>
                       <TableCell align="right">{row.tipo_de_local}</TableCell>
                       <TableCell align="right">{row.confirm_acum}</TableCell>
-                      <TableCell align="right">{row.confirm_dia}</TableCell>
-                      <TableCell align="right">{row.confirmados_acum_100k_hab}</TableCell>
-                      <TableCell align="right">{row.semana_epidem}</TableCell>
+                      <TableCell align="right">{row.confirm_no_dia}</TableCell>
+                      <TableCell align="right">{row.confirm_acum_por_100k_hab}</TableCell>
+                      <TableCell align="right">{row.semana_epidemologica}</TableCell>
                       <TableCell align="right">{row.obitos_acum}</TableCell>
-                      <TableCell align="right">{row.obitos_dia}</TableCell>
-                      <TableCell align="right">{row.obitos_por_conf}</TableCell>
-                      <TableCell align="right">{row.pop_esti_2019}</TableCell>
-                      <TableCell align="right">{row.ultima_atuali}</TableCell>
+                      <TableCell align="right">{row.obitos_no_dia}</TableCell>
+                      <TableCell align="right">{row.obitos_por_confirm}</TableCell>
+                      <TableCell align="right">{row.popula_estimada_2019}</TableCell>
+                      <TableCell align="right">{row.ultima_atualizacao}</TableCell>
                       <TableCell align="right">{row.dado_repetido}</TableCell>
-                      <TableCell align="right">{row.popu_estimada}</TableCell>
-                      <TableCell align="right">{row.data_ref}</TableCell>
-                      <TableCell align="right">{row.num_atuali}</TableCell>
+                      <TableCell align="right">{row.popula_estimada}</TableCell>
+                      <TableCell align="right">{row.data_referencia}</TableCell>
+                      <TableCell align="right">{row.numero_atualizacao}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

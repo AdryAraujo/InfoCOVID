@@ -4,9 +4,19 @@ import logo from './assets/img/logoSemNome.png'
 import Filtro from './components/Filtro';
 import InfoCards from './components/InfoCards';
 import InfoTable from './components/InfoTable';
+import {getCases} from './services/api'
 
 
 function App() {
+  const [cases, setCases] = useState([]);
+
+  async function loadCases(dataInicio, dataFim, selectedState, selectedCity, campo, maiorQue) {
+    const response = await getCases(dataInicio, dataFim, selectedState, selectedCity, campo, maiorQue);
+    if (response.data) {
+        setCases(response.data.data);
+    }
+}
+
   return (
     <div className='container'>
       <div className='cabecalho'>
@@ -19,7 +29,7 @@ function App() {
             <h2>Refine sua busca aqui!</h2>
           </div>
           <div className='container-filtros'>
-            <Filtro></Filtro>
+            <Filtro onSubmit={loadCases}></Filtro>
           </div>
         </div>
 
@@ -28,7 +38,7 @@ function App() {
             <InfoCards></InfoCards>
           </div>
           <div className='container-table'>
-            <InfoTable></InfoTable>
+            <InfoTable rows={cases}></InfoTable>
           </div>
         </div>
       </div>
