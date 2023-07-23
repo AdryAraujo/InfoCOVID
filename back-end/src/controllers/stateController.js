@@ -1,4 +1,4 @@
-const connection = require("../database")
+const connection = require("../config/database")
 
 const stateController = (req, res) => {
     connection.query('SELECT * FROM Estado', (err, results) => {

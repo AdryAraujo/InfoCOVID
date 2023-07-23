@@ -1,4 +1,4 @@
-const connection = require("../database")
+const connection = require("../config/database")
 
 const casesController = async (req, res) => {
     const { dataInicio, dataFim, estado, municipio, campo, maiorQue } = req.query;

@@ -1,4 +1,4 @@
-const connection = require("../database")
+const connection = require("../config/database")
 
 const cityController = (req, res) => {
     const state = req.params.state;
