@@ -1,0 +1,14 @@
+.container{
+display: flex;
+}
+
+.container-img{
+width: 50%;
+border: red;
+}
+
+.container-login{
+width: 50%;
+border: red;
+
+}
