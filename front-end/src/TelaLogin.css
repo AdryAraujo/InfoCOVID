@@ -1,14 +1,23 @@
 .container{
+margin: 0px auto;
 display: flex;
-}
-
-.container-img{
-width: 50%;
-border: red;
+min-height: 100vh;
+height: 100vh;
 }
 
 .container-login{
-width: 50%;
-border: red;
+flex-basis: 50%;
+display: grid;
 
+}
+
+.container-img{
+    flex-basis: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.container-img > img{
+    max-width: 450px;
+    width: 100%;
 }

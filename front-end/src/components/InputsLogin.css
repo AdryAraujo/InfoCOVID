@@ -1,0 +1,63 @@
+.TelaInicial__container-login{
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: white;
+}
+
+.small-logo{
+    width: 80%;
+    max-width: 128px;
+    filter: drop-shadow(1px 1px 1px var(--shadow-color));
+}
+
+.TelaInicial__container-login > p{
+    text-align: center;
+    font-size: 1.0em;
+}
+.TelaInicial__container-login > p > span{
+    font-size: 1.25em;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    width: 100%;
+    gap: 15px;
+}
+
+a{
+    text-decoration: underline;
+}
+
+.link-esqueci-senha{
+    text-align: end;
+    font-size: 0.9em;
+}
+
+.p-cadastro{
+    text-align: center;
+    font-size: 0.9em;
+    color: #79747E;
+}
+
+@media (max-width: 720px) {
+    .TelaInicial__container-login{
+        flex-basis: 100%;
+    }
+
+    .login-form{
+        max-width: 75%;
+    }
+}
+
+@media (max-width: 400px) {
+    .login-form{
+        max-width: 90%;
+    }
+}
