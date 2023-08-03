@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .cabecalho {
+    background-color: #0e4364;
+    width: 100%;
+    min-height: 188px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container-lateral {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: fit-content;
+    padding: 18px;
+    border-radius: 17px;
+    background-color: #0e4364;
+  }
+  
+  .cabecalho img {
+    width: 160px;
+    height: 139px;
+  }
+  
+  .cabecalho h1 {
+    font-family: bebas neue;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 60px;
+  }
+  
+  .container-filtros {
+    justify-content: left;
+  }
+  
+  .container-lateral-titulo {
+    color: white;
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 18px;
+  }
+  
+  .container-cards {
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    display: flex;
+  }
+  
+  .container-dados {
+    display: flex;
+    flex-grow: 1;
+    padding: 36px;
+    overflow: auto;
+  }
+  
+  .container-principal {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 20px;
+    border-radius: 17px;
+    border: 1px solid #d9d9d9;
+  }
+  
+  .container-table {
+    flex: 1;
+    margin: 10px;
+    overflow: auto;
+  }
+  

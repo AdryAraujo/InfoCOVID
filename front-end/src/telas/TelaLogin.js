@@ -1,8 +1,7 @@
-import { TextField } from "@mui/material";
 import React from "react";
 import './TelaLogin.css';
-import InputsLogin from './components/InputsLogin';
-import ImagemLogin from "./assets/img/login.png";
+import InputsLogin from '../components/InputsLogin';
+import ImagemLogin from "../assets/img/login.png";
 
 function TelaLogin(){
     return(
