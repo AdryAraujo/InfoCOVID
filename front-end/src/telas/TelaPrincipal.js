@@ -1,10 +1,10 @@
 import './TelaPrincipal.css';
 import React, { useEffect, useState } from 'react';
-import logo from './assets/img/logoSemNome.png'
-import Filtro from './components/Filtro';
-import InfoCards from './components/InfoCards';
-import InfoTable from './components/InfoTable';
-import {getCases} from './services/api'
+import logo from '../assets/img/logoSemNome.png'
+import Filtro from '../components/Filtro';
+import InfoCards from '../components/InfoCards';
+import InfoTable from '../components/InfoTable';
+import {getCases} from '../services/api';
 
 function TelaPrincipal() {
   const [cases, setCases] = useState([]);
