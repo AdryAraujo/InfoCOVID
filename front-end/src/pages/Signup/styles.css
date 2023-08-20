@@ -1,0 +1,27 @@
+.signup-container {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.signup-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 360px;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}

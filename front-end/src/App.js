@@ -1,52 +1,29 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import './App.css';
-import React, { useEffect, useState } from 'react';
-import logo from './assets/img/logoSemNome.png'
-import Filtro from './components/Filtro';
-import InfoCards from './components/InfoCards';
-import InfoTable from './components/InfoTable';
-import {getCases} from './services/api'
-import TelaLogin from './TelaLogin';
 
-
-function App() {
-  const [cases, setCases] = useState([]);
-  const [percent, setPercent] = useState({});
-
-  async function loadCases(dataInicio, dataFim, selectedState, selectedCity, campo, maiorQue) {
-    const response = await getCases(dataInicio, dataFim, selectedState, selectedCity, campo, maiorQue);
-    if (response.data) {
-      setCases(response.data.data);
-      setPercent({...response.data.statistics[0]});
-    }
+function PrivateRoute() {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 }
 
+function App() {
   return (
-    <TelaLogin/>
-    // <div className='container'>
-    //   <div className='cabecalho'>
-    //     <img id="logo" src={logo} alt='Info Covid' />
-    //     <h1>INFO COVID</h1>
-    //   </div>
-    //   <div className='container-dados'>
-    //     <div className='container-lateral'>
-    //       <div className='container-lateral-titulo'>
-    //         <h2>Refine sua busca aqui!</h2>
-    //       </div>
-    //       <div className='container-filtros'>
-    //         <Filtro onSubmit={loadCases}></Filtro>
-    //       </div>
-    //     </div>
-
-    //     <div className='container-principal'>
-    //       <div className='container-cards'>
-    //         <InfoCards percent={percent}></InfoCards>
-    //       </div>
-    //       <div className='container-table'>
-    //         <InfoTable rows={cases}></InfoTable>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<PrivateRoute />}>
+            <Route exact path='/' element={<Home />} />
+          </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<Signup />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
