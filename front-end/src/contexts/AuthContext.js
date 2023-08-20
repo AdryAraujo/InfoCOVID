@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { signin, signup } from '../services/api';
 
 const AuthContext = createContext();

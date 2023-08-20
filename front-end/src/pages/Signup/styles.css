@@ -18,10 +18,3 @@
     gap: 15px;
     width: 360px;
 }
-
-.error-message {
-    text-align: center;
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-}
