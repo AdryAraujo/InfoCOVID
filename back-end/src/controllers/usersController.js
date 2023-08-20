@@ -1,5 +1,6 @@
 const firebaseAuth = require("firebase/auth");
 const app = require("../config/firebase");
+const connection = require("../config/database");
 
 const auth = firebaseAuth.getAuth(app);
 
@@ -24,7 +25,17 @@ async function signup(req, res) {
         .createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            return res.json(user);
+            return connection.query(`
+                INSERT INTO Usuario
+                VALUES ('${user.uid}')
+            `, (err, results) => {
+                if (err) {
+                    console.error('Erro ao executar a consulta:', err);
+                    return res.status(500).send('Erro ao executar a consulta.');
+                } else {
+                    return res.json(user);
+                }
+            });
         })
         .catch((error) => {
             const errorCode = error.code;
