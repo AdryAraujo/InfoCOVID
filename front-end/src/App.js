@@ -4,7 +4,9 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Map from './pages/Map';
 import './App.css';
+import Layout from './components/Layout';
 
 function PrivateRoute() {
   const { isAuthenticated } = useAuth();
@@ -17,10 +19,15 @@ function App() {
       <Router>
         <Routes>
           <Route exact path='/' element={<PrivateRoute />}>
-            <Route exact path='/' element={<Home />} />
+            <Route exact path='/' element={<Layout />}>
+              <Route index element={<Home />} />
+            </Route>
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Signup />} />
+          <Route path='/acessos' element={<Layout />}>
+            <Route index element={<Map />} />
+          </Route>
         </Routes>
       </Router>
     </AuthProvider>

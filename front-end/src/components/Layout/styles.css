@@ -1,0 +1,20 @@
+.cabecalho {
+    background-color: #0e4364;
+    width: 100%;
+    min-height: 188px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cabecalho img {
+    width: 160px;
+    height: 139px;
+}
+
+.cabecalho h1 {
+    font-family: bebas neue;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 60px;
+}
