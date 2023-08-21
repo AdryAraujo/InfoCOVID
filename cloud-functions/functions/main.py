@@ -1,4 +1,4 @@
-from firebase_functions import https_fn, options
+from firebase_functions import scheduler_fn, options
 from firebase_admin import initialize_app
 import mysql.connector
 from mysql.connector import errorcode
@@ -39,8 +39,8 @@ insert_covid_case = (
 
 options.set_global_options(max_instances=10) 
 
-@https_fn.on_request()
-def update_info_covid_database(req: https_fn.Request) -> https_fn.Response:
+@scheduler_fn.on_schedule(schedule="every day 00:00")
+def update_info_covid_database(event: scheduler_fn.ScheduledEvent) -> None:
     cursor = cnx.cursor()
     
     # Obtem a data mais nova atualmente na tabela Casos 
@@ -68,5 +68,3 @@ def update_info_covid_database(req: https_fn.Request) -> https_fn.Response:
 
     cnx.commit()
     cursor.close()
-    
-    return https_fn.Response("Update completed.")
