@@ -1,15 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './styles.css'
 import logo from '../../assets/img/logoSemNome.png'
 import Filtro from '../../components/Filtro';
 import InfoCards from '../../components/InfoCards';
 import InfoTable from '../../components/InfoTable';
-import { getCases } from '../../services/api';
+import { getCases, saveUserAccessLocation } from '../../services/api';
 import { useState } from 'react';
+import { useAuth } from "../../contexts/AuthContext";
+import useUserLocation from '../../hooks/useUserLocation';
 
 function Home() {
+    const { user } = useAuth()
+    const { location } = useUserLocation();
     const [cases, setCases] = useState([]);
     const [percent, setPercent] = useState({});
+
+    console.log('User Location:', location)
+
+    useEffect(() => {
+        async function saveUserAccess() {
+            try {
+                if (!location) return;
+                const { latitude, longitude } = location;
+                await saveUserAccessLocation(user.uid, latitude, longitude)
+            } catch (error) {
+                console.error('Error saving user access location:', error)
+            }
+        }
+
+        saveUserAccess()
+    }, [location])
 
     async function loadCases(dataInicio, dataFim, selectedState, selectedCity, campo, maiorQue) {
         const response = await getCases(dataInicio, dataFim, selectedState, selectedCity, campo, maiorQue);

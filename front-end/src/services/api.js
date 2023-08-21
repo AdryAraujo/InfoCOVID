@@ -28,3 +28,7 @@ export async function signin(email, password) {
 export async function signup(email, password) {
     return api.post(`/auth/signup`, { email, password })
 }
+
+export async function saveUserAccessLocation(firebaseUid, latitude, longitude) {
+    return api.post(`/access`, { firebaseUid, latitude, longitude })
+}
