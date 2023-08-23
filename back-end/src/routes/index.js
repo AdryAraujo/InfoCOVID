@@ -12,6 +12,7 @@ router.get('/city/:state', cityController);
 router.get('/cases', casesController);
 router.post('/auth/signin', usersController.signin);
 router.post('/auth/signup', usersController.signup);
-router.get('/access', accessController);
+router.get('/access', accessController.getAccesses);
+router.post('/access', accessController.saveUserAccess);
 
 module.exports = router;

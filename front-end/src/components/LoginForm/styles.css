@@ -1,4 +1,8 @@
+<<<<<<< HEAD:front-end/src/components/InputsLogin.css
 .TelaInicial__container-login{
+=======
+.login-form-container {
+>>>>>>> 571fcb7c7c01d65eb51a3fae2ef05fa677e748ea:front-end/src/components/LoginForm/styles.css
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,6 +10,7 @@
     gap: 15px;
     padding: 15px;
     background-color: white;
+    width: 50%;
 }
 
 .small-logo{
@@ -14,11 +19,11 @@
     filter: drop-shadow(1px 1px 1px var(--shadow-color));
 }
 
-.TelaInicial__container-login > p{
+.login-form-container > p{
     text-align: center;
     font-size: 1.0em;
 }
-.TelaInicial__container-login > p > span{
+.login-form-container > p > span{
     font-size: 1.25em;
 }
 

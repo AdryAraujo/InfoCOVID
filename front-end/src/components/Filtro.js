@@ -1,6 +1,6 @@
+import { Button, FormControl, FormLabel, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import React, { useEffect, useState } from 'react';
-import { Button, FormControl, FormLabel, InputLabel, MenuItem, OutlinedInput, Select, TextField } from "@mui/material";
-import { getCities, getStates, getCases } from '../services/api';
+import { getCities, getStates } from '../services/api';
 
 
 function Filtro({onSubmit}) {
