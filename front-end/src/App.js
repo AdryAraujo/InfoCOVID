@@ -15,8 +15,8 @@ function PrivateRoute() {
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Routes>
           <Route exact path='/' element={<PrivateRoute />}>
             <Route exact path='/' element={<Layout />}>
@@ -29,8 +29,8 @@ function App() {
             <Route index element={<Map />} />
           </Route>
         </Routes>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

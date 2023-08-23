@@ -1,12 +1,22 @@
 import HomeIcon from '@mui/icons-material/Home';
 import MapIcon from '@mui/icons-material/Map';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Button } from '@mui/material';
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import logo from '../../assets/img/logoSemNome.png';
 import './styles.css';
+import { useAuth } from '../../contexts/AuthContext';
 
 function Layout() {
+    const { logout } = useAuth()
+    const navigate = useNavigate()
+
+    function handleLogout() {
+        logout()
+        navigate('/login')
+    }
+
     return (
         <div className='container'>
             <div className='cabecalho'>
@@ -28,6 +38,9 @@ function Layout() {
                             Mapa de Acessos
                         </Button>
                     </Link>
+                    <Button startIcon={<LogoutIcon />} variant='contained' color='error' onClick={handleLogout}>
+                        Sair
+                    </Button>
                 </div>
             </div>
             <Outlet />
