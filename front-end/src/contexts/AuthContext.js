@@ -35,6 +35,7 @@ export function AuthProvider({ children }) {
   async function handleSignup(email, password) {
     const response = await signup(email, password)
     if (response.status === 200) {
+        localStorage.setItem('user', JSON.stringify(response.data))
         setUser(response.data)
     }
     return response;

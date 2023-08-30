@@ -78,6 +78,7 @@ function Signup() {
                         className='form__input'
                         variant="contained"
                         type='submit'
+                        sx={{backgroundColor: 'rgb(61, 152, 155)'}}
                     >
                         Cadastrar
                     </Button>

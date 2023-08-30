@@ -1,8 +1,4 @@
-<<<<<<< HEAD:front-end/src/components/InputsLogin.css
-.TelaInicial__container-login{
-=======
 .login-form-container {
->>>>>>> 571fcb7c7c01d65eb51a3fae2ef05fa677e748ea:front-end/src/components/LoginForm/styles.css
     display: flex;
     flex-direction: column;
     align-items: center;

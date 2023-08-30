@@ -29,12 +29,12 @@ function Layout() {
 
                 <div className="cabecalho-links">
                     <Link to={'/'}>
-                        <Button startIcon={<HomeIcon />} variant='contained'>
+                        <Button startIcon={<HomeIcon />} variant='contained' sx={{backgroundColor: 'rgb(61, 152, 155)'}}>
                             Home
                         </Button>
                     </Link>
                     <Link to={'/acessos'}>
-                        <Button startIcon={<MapIcon />} variant='contained'>
+                        <Button startIcon={<MapIcon />} variant='contained' sx={{backgroundColor: 'rgb(61, 152, 155)'}}>
                             Mapa de Acessos
                         </Button>
                     </Link>

@@ -73,7 +73,9 @@ function LoginForm() {
                 <Button
                     className='form__input'
                     variant="contained"
-                    type='submit'>
+                    type='submit'
+                    sx={{backgroundColor: 'rgb(61, 152, 155)'}}
+                >
                     Entrar
                 </Button>
 
