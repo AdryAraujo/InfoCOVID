@@ -5,7 +5,7 @@ import ImagemLogin from "../assets/img/login.png";
 
 function TelaLogin(){
     return(
-        <div className="container">
+        <div className="container-total">
             <div className="container-img">
                 <img src={ImagemLogin} alt="Info Covid"/>
             </div>

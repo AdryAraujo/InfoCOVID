@@ -1,3 +1,14 @@
+.nav-custom{
+    background-color: #0e4364;
+    color: white;
+}
+
+.nav-custom strong{
+    color: white;
+    letter-spacing: 1px;
+    font-size: 24px;
+}
+
 .cabecalho {
     background-color: #0e4364;
     width: 100%;

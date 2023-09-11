@@ -19,7 +19,7 @@ function TelaPrincipal() {
 }
 
   return (
-    <div className='container'>
+    <div className='container-total'>
       <div className='cabecalho'>
         <img id="logo" src={logo} alt='Info Covid' />
         <h1>INFO COVID</h1>

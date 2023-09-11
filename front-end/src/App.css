@@ -9,7 +9,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.container {
+.container-total {
   display: flex;
   flex-direction: column;
   width: 100vw;
