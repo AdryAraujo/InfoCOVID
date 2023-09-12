@@ -36,25 +36,29 @@ function Home() {
     }
 
     return (
-        <div className='container-dados'>
-            <div className='container-lateral'>
-                <div className='container-lateral-titulo'>
-                    <h2>Refine sua busca aqui!</h2>
+        <>
+            <div className='container-dados'>
+                <div className='container-lateral'>
+                    <div className='container-lateral-titulo'>
+                        <h2>Refine sua busca aqui!</h2>
+                    </div>
+                    <div className='container-filtros'>
+                        <Filtro onSubmit={loadCases}></Filtro>
+                    </div>
                 </div>
-                <div className='container-filtros'>
-                    <Filtro onSubmit={loadCases}></Filtro>
+
+                <div className='container-principal'>
+                    <div className='container-cards'>
+                        <InfoCards percent={percent}></InfoCards>
+                    </div>
+                    <div className='container-table'>
+                        <InfoTable rows={cases}></InfoTable>
+                    </div>
                 </div>
             </div>
 
-            <div className='container-principal'>
-                <div className='container-cards'>
-                    <InfoCards percent={percent}></InfoCards>
-                </div>
-                <div className='container-table'>
-                    <InfoTable rows={cases}></InfoTable>
-                </div>
-            </div>
-        </div>
+        </>
+
     )
 }
 

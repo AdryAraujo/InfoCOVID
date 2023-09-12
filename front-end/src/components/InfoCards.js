@@ -4,7 +4,7 @@ import React from "react";
 function InfoCards({percent}) {
     return (
         <>
-            <Card
+            <Card className="card"
                 sx={{
                     width: '150px',
                     height: '100px',
