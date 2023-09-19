@@ -48,17 +48,17 @@
   overflow: auto;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 649px) {
   .container-lateral{
     width: 90%;
     padding: 15px;
-    margin: 15px;
+    margin: 15px !important;
   }
 
   .container-principal{
     width: 90%;
     padding: 15px;
-    margin: 15px;
+    margin: 15px !important;
   }
 }
 
@@ -87,5 +87,31 @@
     flex-grow: 1;
     padding: 36px;
     overflow: auto;
+  }
+}
+
+@media(min-width: 650px) and (max-width: 1198px){
+  .container-lateral {
+    display: flex;
+    flex-direction: column;
+    width: 460px;
+    height: fit-content;
+    padding: 18px;
+    border-radius: 17px;
+    background-color: #0e4364;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30%;
+    margin-right: 35% !important;
+
+  }
+
+  .container-dados{
+    align-items: center;
+    overflow: auto;
+  }
+
+  .container-principal{
+    margin: 10px;
   }
 }

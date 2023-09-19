@@ -1,5 +1,6 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import React from "react";
+import "./InfoCards.css"
 
 function InfoCards({percent}) {
     return (
@@ -21,7 +22,7 @@ function InfoCards({percent}) {
                     </Typography>
                 </CardContent>
             </Card>
-            <Card
+            <Card className="card"
                 sx={{
                     width: '170px',
                     height: '100px',
@@ -38,7 +39,7 @@ function InfoCards({percent}) {
                     </Typography>
                 </CardContent>
             </Card>
-            <Card
+            <Card className="card"
                 sx={{
                     width: '150px',
                     height: '100px',
@@ -55,7 +56,7 @@ function InfoCards({percent}) {
                     </Typography>
                 </CardContent>
             </Card>
-            <Card
+            <Card className="card"
                 sx={{
                     width: '150px',
                     height: '100px',

@@ -34,7 +34,7 @@ function LoginForm() {
 
     return (
         <div className="login-form-container">
-            <img className='small-logo' src={logo} alt="logo" />
+            <img className='small-logo' src={logo} />
             <p>Faça seu login no <br /> <span>Info Covid</span> </p>
             <form className="login-form" onSubmit={handleSubmit}>
                 <TextField className='form__input'
