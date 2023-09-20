@@ -50,13 +50,13 @@
 
 @media (max-width: 649px) {
   .container-lateral{
-    width: 90%;
+    /* width: 90%; */
     padding: 15px;
     margin: 15px !important;
   }
 
   .container-principal{
-    width: 90%;
+    /* width: 90%; */
     padding: 15px;
     margin: 15px !important;
   }
@@ -94,7 +94,7 @@
   .container-lateral {
     display: flex;
     flex-direction: column;
-    width: 460px;
+    /* width: 460px; */
     height: fit-content;
     padding: 18px;
     border-radius: 17px;
@@ -102,7 +102,7 @@
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 30%;
-    margin-right: 35% !important;
+    margin-right: 30% !important;
 
   }
 
