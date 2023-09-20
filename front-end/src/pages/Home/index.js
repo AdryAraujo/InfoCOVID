@@ -12,6 +12,7 @@ function Home() {
     const { location } = useUserLocation();
     const [cases, setCases] = useState([]);
     const [percent, setPercent] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         async function saveUserAccess() {
@@ -28,7 +29,9 @@ function Home() {
     }, [location])
 
     async function loadCases(dataInicio, dataFim, selectedState, selectedCity, campo, maiorQue) {
+        setIsLoading(true);
         const response = await getCases(dataInicio, dataFim, selectedState, selectedCity, campo, maiorQue);
+        setIsLoading(false);
         if (response.data) {
             setCases(response.data.data);
             setPercent({ ...response.data.statistics[0] });
@@ -52,7 +55,7 @@ function Home() {
                         <InfoCards percent={percent}></InfoCards>
                     </div>
                     <div className='container-table'>
-                        <InfoTable rows={cases}></InfoTable>
+                        <InfoTable rows={cases} isLoading={isLoading}></InfoTable>
                     </div>
                 </div>
             </div>

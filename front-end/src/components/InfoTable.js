@@ -1,7 +1,13 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import React from "react";
 
-function InfoTable({ rows }) {
+function InfoTable({ rows, isLoading }) {
+  if (isLoading) {    
+    return (
+      <CircularProgress />
+    )
+  }
+
   return (
     <TableContainer component={Paper} sx={{
       overflowX: 'unset',
@@ -32,6 +38,8 @@ function InfoTable({ rows }) {
           </TableRow>
 
         </TableHead>
+
+
         <TableBody>
           {rows.map((row) => (
             <TableRow
